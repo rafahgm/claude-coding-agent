@@ -86,6 +86,28 @@ Este projeto não é afiliado, patrocinado ou endossado pela Anthropic, pela Mic
 
 Apache License, Version 2.0 — ver [`LICENSE`](LICENSE). Leia também o [`NOTICE`](NOTICE): ele registra que a reutilização do login do Claude Code CLI foi autorizada pela Anthropic **especificamente para este projeto sem fins comerciais**, e que essa autorização não é herdada por forks comerciais — mesmo sendo o código, em si, livre para forkar sob Apache 2.0.
 
-## Próximo passo
+## Desenvolvimento
 
-Nada mais trava o primeiro commit de código — as nove decisões estruturais estão fechadas ([`docs/DECISIONS.md`](docs/DECISIONS.md#registro)), e `LICENSE`/`NOTICE` já existem no repositório. O próximo passo são os spikes da v0.0 em [`docs/ROADMAP.md`](docs/ROADMAP.md#v00--spikes-de-validação) — prioridade para o **S2** (binário nativo empacotado no `.vsix`, agora também autenticando com o token do CLI) e o **S4** (ciclo de aprovação de ferramentas numa sessão longa).
+**Status: scaffold inicial.** `AgentRuntime`/`SdkAgentRuntime` (streaming input mode), `extension.ts` com um comando de placeholder, esbuild, regra de lint que isola o import do SDK. Ainda não há `ChatController` nem UI real — ver [`docs/ARCHITECTURE.md` § 13](docs/ARCHITECTURE.md#13-estrutura-de-pastas-proposta) para a estrutura completa planejada.
+
+```
+npm install
+npm run compile     # build de desenvolvimento (esbuild)
+npm run typecheck   # tsc --noEmit
+npm run lint        # regra de arquitetura incluída
+npm run package:linux-x64   # .vsix para Linux x64, com o binário nativo do SDK
+```
+
+Depurar: F5 no VS Code abre uma janela de Extension Development Host com este projeto carregado.
+
+## Spikes (v0.0)
+
+Resultados em [`spikes/`](spikes/), cada um com seu próprio README/FINDINGS:
+
+| Spike | Status |
+|---|---|
+| [S1 — chat participant](spikes/s1-chat-participant/README.md) | Não bloqueia mais nada ([DECISIONS #9](docs/DECISIONS.md#9-superfície-de-ui-webview-própria-ou-chat-participant-api)); scaffolded, teste manual pendente (requer UI gráfica) |
+| [S2 — `.vsix` com binário nativo](spikes/s2-vsix-packaging/FINDINGS.md) | ✅ Confirmado em Linux 2026-09-20; Windows/macOS pendentes |
+| S6 — autenticação via `CLAUDE_CODE_OAUTH_TOKEN` | ✅ Confirmado em Linux 2026-09-20 (junto do S2) — ver [DECISIONS #4](docs/DECISIONS.md#4-autenticação) |
+
+Próximos da v0.0: **S3** (`vscode.lm.invokeTool` fora de contexto de chat), **S4** (ciclo de aprovação numa sessão longa), **S5** (sessões retomáveis entre extensão e CLI). Ver [`docs/ROADMAP.md`](docs/ROADMAP.md#v00--spikes-de-validação).

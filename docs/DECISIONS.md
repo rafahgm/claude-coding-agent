@@ -182,7 +182,7 @@ Argumentos dos dois lados:
 
 **Variável de ambiente:** **`CLAUDE_CODE_OAUTH_TOKEN`**, gerada por `claude setup-token`.
 
-O que ainda precisa de verificação não é o nome da variável, e sim **qual opção do `query` controla o ambiente do processo filho** — o token tem que chegar ao binário que o SDK faz spawn, não ao Extension Host. Ver a nota do spike S6 em [ROADMAP § v0.0](ROADMAP.md#v00--spikes-de-validação).
+> ✅ **Verificado em Linux, 2026-09-20 (spike S6).** É a opção `env` de `Options` (parâmetro de `query()`): substitui o ambiente do processo filho **por inteiro** — não faz merge com `process.env`, então quem chama precisa espalhar `process.env` manualmente e acrescentar `CLAUDE_CODE_OAUTH_TOKEN`. Testado com `HOME` isolado (sem `~/.claude/.credentials.json`) e só essa variável setada: um turno completo, incluindo chamada de ferramenta, autenticou e funcionou. `SdkAgentRuntime.ts` já implementa isso. Windows e macOS não testados — ver [spikes/s2-vsix-packaging/FINDINGS.md](../spikes/s2-vsix-packaging/FINDINGS.md).
 
 **Sub-decisões que a decisão abre e continuam pendentes** (nenhuma bloqueia o scaffold; todas bloqueiam a tela de onboarding):
 
