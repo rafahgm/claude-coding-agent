@@ -1,0 +1,55 @@
+{
+  "name": "claude-coding-agent",
+  "displayName": "Claude Coding Agent",
+  "description": "Chat e agente de codificação no VS Code, sobre o Claude Agent SDK, sem exigir GitHub Copilot.",
+  "version": "0.0.1",
+  "publisher": "rafahgm",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rafahgm/claude-coding-agent.git"
+  },
+  "private": true,
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "AI",
+    "Chat"
+  ],
+  "extensionKind": [
+    "workspace"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "claudeCodingAgent.openChat",
+        "title": "Claude Coding Agent: Open Chat"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "package": "node esbuild.js --production",
+    "vscode:prepublish": "npm run package",
+    "lint": "eslint src",
+    "typecheck": "tsc --noEmit",
+    "package:linux-x64": "node scripts/prune-native-platform.js linux-x64 && vsce package --target linux-x64"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/vscode": "^1.90.0",
+    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/parser": "^8.18.0",
+    "@vscode/vsce": "^4.0.0",
+    "esbuild": "^0.24.0",
+    "eslint": "^9.16.0",
+    "typescript": "^5.7.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.3.278"
+  }
+}

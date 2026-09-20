@@ -1,0 +1,18 @@
+.vscode/**
+src/**
+test/**
+spikes/**
+scripts/**
+docs/**
+.gitignore
+eslint.config.js
+esbuild.js
+tsconfig.json
+**/*.map
+**/.gitkeep
+
+# node_modules viaja no .vsix: o SDK não é bundlado pelo esbuild (ver
+# esbuild.js) porque a resolução do binário nativo depende da árvore real
+# de node_modules. `vsce package` já detecta a árvore de produção via
+# `npm ls` e exclui devDependencies sozinho; `--target <plataforma>` poda
+# os pacotes nativos de outras plataformas (campos os/cpu/libc).
