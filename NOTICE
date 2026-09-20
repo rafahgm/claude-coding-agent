@@ -1,0 +1,49 @@
+Claude Coding Agent
+Copyright 2026 Rafael
+
+This product includes software licensed under the Apache License,
+Version 2.0. See the LICENSE file for the full text.
+
+------------------------------------------------------------------------------
+A note on authentication and non-commercial use
+------------------------------------------------------------------------------
+
+This project's own code is licensed under the Apache License, Version 2.0,
+above, and may be freely used, modified, and redistributed — including
+commercially — under the terms of that license.
+
+Separately, and NOT covered by the Apache License grant: this project's
+default authentication path reuses the credential of a Claude Code CLI
+already installed and authenticated on the user's own machine, passed to
+the Claude Agent SDK's child process via CLAUDE_CODE_OAUTH_TOKEN, instead
+of requiring a separately configured Anthropic API key.
+
+The Claude Agent SDK's own terms state:
+
+  "Unless previously approved, Anthropic does not allow third party
+  developers to offer claude.ai login or rate limits for their products,
+  including agents built on the Claude Agent SDK."
+  — Agent SDK Quickstart, https://code.claude.com/docs/en/agent-sdk/quickstart
+
+For this specific project, Thariq at Anthropic clarified informally that
+reusing a user's own local Claude Code CLI login in this way is acceptable
+because this project is not commercialized.
+
+That clarification:
+
+  - was given to this project specifically, not as a general policy;
+  - is conditioned on the project remaining non-commercial (no paid
+    license, no "pro" tier, no product-linked sponsorship, no other form
+    of monetization);
+  - is not a license grant, is not transferable, and is NOT inherited by
+    forks — including forks that keep this NOTICE and otherwise comply
+    with the Apache License in every respect.
+
+Anyone who forks this project and intends to commercialize it in any form
+must either (a) obtain their own authorization from Anthropic before
+relying on this authentication path, or (b) remove it and require users
+to supply their own Anthropic API key (or another Anthropic-documented
+authentication method) instead.
+
+See docs/OPEN-QUESTIONS.md #4 (Autenticação) in this repository for the
+full context and the record of this decision.

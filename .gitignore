@@ -1,0 +1,23 @@
+# Dependências
+node_modules/
+
+# Build
+out/
+dist/
+*.vsix
+
+# Logs e diagnóstico local (ver docs/DECISIONS.md #5 — Telemetria)
+*.log
+npm-debug.log*
+
+# Editor / SO
+.vscode-test/
+.DS_Store
+Thumbs.db
+
+# Ambiente
+.env
+.env.local
+
+# TypeScript
+*.tsbuildinfo
