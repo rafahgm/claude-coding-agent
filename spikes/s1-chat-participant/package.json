@@ -1,0 +1,26 @@
+{
+  "name": "s1-chat-participant-spike",
+  "displayName": "S1 — Chat Participant Spike (descartável)",
+  "description": "Spike de validação: um chat participant de terceiro funciona em VS Code limpo, sem conta GitHub? Ver ROADMAP.md v0.0 e DECISIONS.md #9. Não bloqueia mais nada — código descartável.",
+  "version": "0.0.1",
+  "private": true,
+  "publisher": "spike-local",
+  "license": "Apache-2.0",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "activationEvents": [
+    "onChatParticipant:s1Spike.agent"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "chatParticipants": [
+      {
+        "id": "s1Spike.agent",
+        "name": "s1spike",
+        "description": "Spike S1 — só existe para testar se um chat participant de terceiro funciona sem conta GitHub/Copilot.",
+        "isSticky": true
+      }
+    ]
+  }
+}
